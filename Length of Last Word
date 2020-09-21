@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int lengthOfLastWord(string s) 
+    {
+        stringstream s1(s); // Used for breaking words 
+    string word; // to store individual words 
+  
+    int count = 0; 
+    while (s1 >> word) 
+        count++;
+    return word.size();         
+    }
+};
+

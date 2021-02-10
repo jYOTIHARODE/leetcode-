@@ -1,0 +1,11 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string s="4193 with words";
+    stringstream str(s);
+    int x = 0;
+    str>>x;
+    cout<<x;
+    return 0;
+}

@@ -1,0 +1,37 @@
+class Solution {
+public:
+    unordered_map<long,string>mp;
+    
+    long generateKey(string url)
+    {
+        long key = 0;
+        int D = 256;
+        int p = 100153;//long number for  collision 
+        
+        for(auto c:url)
+        {
+            key = (key*D+c)%p;
+        }
+        return key;
+    }
+    
+    // Encodes a URL to a shortened URL.
+    string encode(string longUrl) 
+    {
+        int key = generateKey(longUrl);
+        mp[key]=longUrl;
+        
+        return "https://tinyurl.com/" +to_string(key);
+    }
+
+    // Decodes a shortened URL to its original URL.
+    string decode(string shortUrl) 
+    {
+        int n = shortUrl.size();
+        
+        while(shortUrl[n]!='/')
+                n--;
+        int key = stoi(shortUrl.substr(n+1));
+              return mp[key];
+    }
+};

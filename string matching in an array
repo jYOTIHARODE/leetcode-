@@ -1,0 +1,31 @@
+class Solution 
+{
+public:
+    vector<string> stringMatching(vector<string>& w) 
+    {
+        sort(w.begin(), w.end(), []
+        (const std::string &s1, const std::string &s2) {return s1.size() < s2.size(); });
+        
+        vector<string> res;
+        unordered_map<string,string> mp;
+        
+        for(int i=0;i<w.size();i++)
+        {
+            string str=w[i];
+            for(int j=i+1;j<w.size();j++)
+            {
+                string rs=w[j];
+                if(rs.find(str)!=string::npos)
+                {   
+                    mp[str]=str;
+                }    
+            }
+        }
+        for(auto i=mp.begin();i!=mp.end();i++)
+        {
+            string ans=i->first;
+            res.push_back(ans);
+        }
+        return res;        
+    }
+};

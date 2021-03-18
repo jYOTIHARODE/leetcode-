@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int divide(long int dividend, long int divisor) 
+    {
+        long int ans = 0;
+        int max = pow(2,31)-1;
+        int min = -pow(2,31);
+        
+        if(dividend==0) ans = 0;
+        else if(dividend == 1 and divisor == 1) ans = 1;
+        else
+        {
+            ans = dividend/divisor;
+        }
+        if(ans>max) return max;
+        else if(ans<min)    return min;
+        if(ans%1!=0)    return (ans - (dividend%divisor)/divisor);
+        else    return ans;
+    }
+};

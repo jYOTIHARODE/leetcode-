@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        int n = nums.size();
+        unordered_map<int,int>res;
+        vector<int>ans;
+        
+        for(int i=0 ; i<n ; i++)
+        {
+            int sum = target-nums[i];
+            if(res.find(sum)!=res.end())
+            {
+                ans.push_back(res[sum]);
+                ans.push_back(i);
+                return ans;
+            }
+            else
+            {
+                res.insert(make_pair(nums[i],i));
+            }
+        }
+        return ans;
+    }
+};

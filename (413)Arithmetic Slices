@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int numberOfArithmeticSlices(vector<int>& nums) 
+    {
+        int n = nums.size();
+        int ans=0;
+        
+        if(n==0)    return 0;
+        else
+        {
+            vector<int>v;
+            for(int i=1 ; i<n ; i++)    
+            {
+                v.push_back(nums[i]-nums[i-1]);
+            }
+            
+            int count=1;
+            for(int i=1 ; i<v.size() ; i++)
+            {
+                if(v[i]==v[i-1])    count++;
+                else
+                {
+                    ans+=(count*(count-1))/2;
+                    count=1;
+                }
+            }
+             ans+=(count*(count-1))/2;
+        }
+        return ans;
+    }
+};

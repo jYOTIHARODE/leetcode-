@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int>original;
+    vector<int>temp;
+    Solution(vector<int>& nums) {
+        original = nums;
+        temp = nums;
+    }
+    
+    vector<int> reset() 
+    {
+        return original;
+    }
+   
+    vector<int> shuffle() {
+        if(temp.empty())        return temp;
+        int n = temp.size();
+        for(int i=n ; i>0 ; i--)
+                swap(temp[i-1],temp[rand()%i]);
+        return temp;
+    }
+};

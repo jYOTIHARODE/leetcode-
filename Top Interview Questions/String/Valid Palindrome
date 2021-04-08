@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool isPalindrome(string s) 
+    {
+        s.erase( remove(s.begin(), s.end(), ' '), s.end());     
+        string s_copy=s;
+        reverse(s.begin(),s.end());
+        
+        if(s_copy==s)
+            return 1;
+        else
+            return 0;      
+    }
+};

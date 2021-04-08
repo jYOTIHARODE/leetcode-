@@ -5,7 +5,7 @@ public:
         if(!root)   return ans;
         else
         {
-            int lheight = maxDepth(root->left)   ;
+            int lheight = maxDepth(root->left);
             int rheight = maxDepth(root->right);
             if(lheight>rheight) ans = lheight+1;
             else    ans = rheight+1;

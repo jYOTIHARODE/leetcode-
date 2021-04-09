@@ -21,7 +21,7 @@ public:
         {
             t += ")";
             solve(n, open, close+1, t);
-            t.pop_back();//backtracking
+            t.pop_back();//backtracking , it removes the last character of the string 
         }
     }
     

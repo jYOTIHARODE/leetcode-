@@ -1,0 +1,36 @@
+class Solution {
+public:
+    vector<string> ans;
+    
+    void solve(int n, int open, int close, string &t) //open for open bracket count and close for close bracket count
+    {
+        if(t.length() == 2*n) //i.e. if n==3 then 3*2=6 makes a parentheses
+        {
+            ans.push_back(t);
+            return;
+        }
+        
+        if(open < n) 
+        {
+            t += "(";
+            solve(n, open+1, close, t);
+            t.pop_back();//backtracking ,Because in recursive call we do same thing again and again
+        }         
+        
+        if(close < open) 
+        {
+            t += ")";
+            solve(n, open, close+1, t);
+            t.pop_back();//backtracking
+        }
+    }
+    
+    vector<string> generateParenthesis(int n) 
+    {
+        string t;
+        solve(n, 0, 0, t);
+        return ans;
+    }
+};
+
+//Time Complexity:- O(n^2)

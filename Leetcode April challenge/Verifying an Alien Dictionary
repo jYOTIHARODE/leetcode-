@@ -1,0 +1,24 @@
+class Solution 
+{
+public:       
+    bool isAlienSorted(vector<string>& x, string order) 
+    {
+        int mp[26];    
+        for(int i=0 ; i<order.size() ; i++) 
+            mp[order[i]-'a'] = i;
+    
+        for(int i=0 ; i<x.size()-1 ; i++) 
+        {
+            for(int j=0 ; j<x[i].size() ; j++) 
+            {    
+                if(j >= x[i+1].size()) return false;   
+                if(x[i][j] != x[i+1][j]) 
+                {
+                    if(mp[x[i][j] - 'a'] > mp[x[i+1][j] - 'a']) return false;
+                    else break;
+                }
+            }
+        }
+        return true;            
+    }
+};

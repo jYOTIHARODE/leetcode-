@@ -1,0 +1,9 @@
+class Solution {
+public:
+    bool isPowerOfThree(int n) 
+    {
+        int large = pow(3,19);
+        if(n<=0) return false;
+            return large%n==0;
+    }
+};

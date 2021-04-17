@@ -1,0 +1,1 @@
+delete p1 from Person p1 inner join Person p2 on p1.Email = P2.Email and p1.Id > p2.Id

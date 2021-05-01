@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int reverse(int x) {
+        long long ans = 0;
+        while(x)
+        {
+            ans = (long long)ans*10+(x%10);
+            if(int(ans)!=ans)   return 0;
+            x/=10;
+        }
+        return ans;
+    }
+};

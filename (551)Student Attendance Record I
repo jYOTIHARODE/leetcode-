@@ -1,0 +1,10 @@
+class Solution {
+public:
+    bool checkRecord(string s) {
+        string s1 = "LLL";
+        int countA = count(s.begin(),s.end(),'A');
+        if(countA>1)    return false;
+        if(s.find(s1)!=string::npos)    return false;
+        return true;
+    }
+};

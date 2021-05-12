@@ -1,0 +1,16 @@
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) 
+    {
+        if(!head || !head->next) return nullptr;
+        ListNode *sptr = head;
+        ListNode *fptr = head->next;
+
+        while(fptr) {
+            if(fptr <= sptr) return fptr;
+            sptr = sptr->next;
+            fptr = fptr->next;
+        }
+        return nullptr;    
+    }
+};

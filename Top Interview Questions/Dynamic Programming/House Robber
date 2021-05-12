@@ -1,0 +1,16 @@
+class Solution {
+public:
+    unordered_map<int, int> M;
+
+    int robUtil(vector<int> &nums, int index) 
+    {
+        if(index >= nums.size()) return 0;
+        if(M.count(index)) return M[index];
+        return M[index] = max(robUtil(nums, index+2) + nums[index], robUtil(nums, index+1));
+    }
+    
+    int rob(vector<int>& nums) 
+    {
+        return robUtil(nums, 0);
+    }
+};

@@ -1,0 +1,38 @@
+  vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        sort(intervals.begin(),intervals.end());
+        stack<pair<int,int>>s;
+        
+        
+        s.push({intervals[0][0],intervals[0][1]});
+        
+        for(int i=1;i<intervals.size();i++){
+            
+            int start1=s.top().first;
+             int end1=s.top().second;
+            
+            int start2= intervals[i][0];
+            int end2= intervals[i][1];
+            
+            if(intervals[i][0]<=s.top().second){
+                s.pop();
+                end1=max(end1,end2);
+                s.push({start1,end1});
+            }
+            else if(intervals[i][0]>end1)
+            {
+                s.push({start2,end2});
+            }
+        }
+  vector<vector<int>>res;
+        vector<int>temp;
+        while(!s.empty()){
+            
+            temp.push_back(s.top().first);
+            temp.push_back(s.top().second);
+            res.push_back(temp);
+            s.pop();
+            temp.clear();
+        
+    }
+        return res;
+    }

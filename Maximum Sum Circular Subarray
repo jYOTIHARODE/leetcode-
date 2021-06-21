@@ -1,0 +1,28 @@
+ int kadanes(vector<int>&nums){
+         int sum = nums[0], answer = nums[0];
+        for(int i=1; i<nums.size(); i++){
+            sum += nums[i];
+            if(sum < nums[i]) sum = nums[i];
+            answer = max(answer, sum);
+        }
+        return answer;
+    }
+public:
+    int maxSubarraySumCircular(vector<int>& nums) {
+        int n=nums.size();
+        if(n== 0)
+        return 0;
+        
+        int x= kadanes(nums);
+        int y=0;
+        for(int i=0;i<n;i++){
+            y=y+nums[i];
+            nums[i]*=-1;
+        }
+        
+        int z= kadanes(nums);
+        if(y+z==0) return x;
+        
+        return max(x,y+z);
+        
+    }

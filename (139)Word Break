@@ -1,0 +1,26 @@
+class Solution {
+public:
+    map<int,unordered_set<string>>M;
+    vector<int>DP;
+    
+    bool check(string&s,int index)
+    {
+        if(index==s.length())       return true;
+        if(DP[index]!=-1)   return DP[index];
+        
+        for(auto &[a,b]: M)
+        {
+            string w = s.substr(index,a);
+            if(b.count(w) && check(s,index+a))
+                return DP[index] = true;
+        }
+        return DP[index] = false;
+    }
+    
+    bool wordBreak(string s, vector<string>& wordDict) {
+        for(auto &word:wordDict)
+              M[word.length()].insert(word);
+        DP = vector<int>(s.length()+1,-1);
+        return check(s,0);
+    }
+};

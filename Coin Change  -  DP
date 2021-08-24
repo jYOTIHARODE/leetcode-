@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int INF = 1e5+7;
+    int coinChange(vector<int>& coins, int amount) 
+    {
+        vector<int>DP(amount+1,INF);
+        DP[0]=0;
+        
+        for(int i=0 ; i<=amount ; i++)
+        {
+            for(int coin:coins)
+            {
+                if(i-coin>=0)
+                    DP[i] = min(1+DP[i-coin],DP[i]);
+            }
+        }
+        return DP[amount] == INF ? -1 : DP[amount];
+    }
+};

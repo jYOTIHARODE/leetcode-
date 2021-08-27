@@ -1,0 +1,30 @@
+class Solution {
+public:
+    void inorder(vector<int>&ans,TreeNode* root)
+    {
+        if(!root)   return;
+        inorder(ans,root->left);
+        ans.push_back(root->val);
+        inorder(ans,root->right);
+    }
+    
+    bool isValidBST(TreeNode* root) {
+        vector<int>ans;
+        inorder(ans,root);
+        bool res = true;
+        int max = ans[0];
+        for(int i=1 ; i<ans.size() ; i++)
+        {
+            if(ans[i]<=max) 
+            {
+                res = false;
+                break;
+            }
+            else
+            {
+                max = ans[i];
+            }
+        }
+        return res;
+    }
+};

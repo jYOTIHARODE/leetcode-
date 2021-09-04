@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int countNodes(TreeNode* root) {
+       queue<TreeNode*>q;
+        int count=0;
+        if(!root)   return count;
+        q.push(root);
+        TreeNode* curr;
+        int n;
+        while(!q.empty())
+        {
+            n = q.size();
+            while(n){
+                curr = q.front();
+                count++;
+                q.pop();
+                if(curr->left)  q.push(curr->left);
+                if(curr->right) q.push(curr->right);
+                n--;
+            }
+        }
+        return count;
+    }
+};

@@ -1,0 +1,16 @@
+class Solution {
+public:
+    void checkout(string &s , int &n , int left , int right , int &counter){
+        while(left>=0 and right<n and s[left--]==s[right++])
+            counter++;
+    }
+    int countSubstrings(string s) {
+        int n = s.size();
+        int counter = 0;
+        for(int i=0 ; i<n ; i++){
+            checkout(s,n,i,i,counter);
+            checkout(s,n,i,i+1,counter);
+        }
+        return counter;
+    }
+};

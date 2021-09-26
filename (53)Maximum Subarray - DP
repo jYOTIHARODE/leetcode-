@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums){
+        int DP=-10001, res=-10001;
+        for(auto i:nums){
+            DP=max(DP+i, i);
+            res=max(DP, res);
+        }
+        return res;
+    }
+};

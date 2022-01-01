@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<vector<int>> ret;
+    vector<int> seq;
+    bool used[6] = {0};
+    int n;
+    vector<vector<int>> permute(vector<int>& nums) {
+        n = nums.size();
+        seq.resize(n);
+        backtrack(nums, 0);
+        return ret;
+    }
+
+    void backtrack(vector<int> &nums, int idx)
+    {
+        if (idx >= n) 
+        {
+            ret.emplace_back(seq);
+            return;
+        }
+        for (int i = 0; i < n; ++i)
+        {
+            if (used[i]) continue;
+            seq[idx] = nums[i], used[i] = true;
+            backtrack(nums, idx + 1);
+            used[i] = false;
+        }      
+    }
+};
